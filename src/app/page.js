@@ -9,7 +9,16 @@ export default async function Home({ searchParams }) {
 
   console.log('requestURL : ', requestURL);
 
-  const res = await fetch(requestURL);
+  const res = await fetch(requestURL, {
+    next: { revalidate: 10000 }
+  });
+
+  // const res = await new Promise((resolve) => {
+  //   setTimeout(async () => {
+  //     const response = await fetch(requestURL, { next: { revalidate: 10 } });
+  //     resolve(response);
+  //   }, 2000)
+  // });
   const data = await res.json();
 
 
