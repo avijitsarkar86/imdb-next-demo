@@ -7,7 +7,7 @@ export default async function MovieDetails({ params }) {
   const movieId = params.id;
   const res = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`);
   const movie = await res.json();
-  console.log('movie : ', movie);
+  // console.log('movie : ', movie);
   return (
     <div className="w-full">
       <div className="p-4 md:pt-8 flex flex-col md:flex-row content-center max-w-6xl mx-auto md:space-x-6">
@@ -27,8 +27,12 @@ export default async function MovieDetails({ params }) {
             {movie.release_date || movie.first_air_date}
           </p>
           <p className="mb-3">
-          <span className="font-semibold mr-1">Rating: </span>
+          <span className="font-semibold mr-1">Total Vote: </span>
             {movie.vote_count}
+          </p>
+          <p className="mb-3">
+          <span className="font-semibold mr-1">Rating: </span>
+            {movie.vote_average}
           </p>
         </div>
       </div>

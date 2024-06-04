@@ -4,19 +4,22 @@ import React from 'react'
 import { FiThumbsUp } from 'react-icons/fi';
 
 export default function Card({ result }) {
-  console.log('result : ', result);
+  console.log('Card :: result : ', result);
   return (
-    <div className="group cursor-pointer sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border-slate-400 sm:m-2 transition-shadow duration-200">
+    <div className="group cursor-pointer sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 m-2 transition-shadow duration-200">
       <Link href={`/movie/${result.id}`}>
         <Image
           src={`https://image.tmdb.org/t/p/original${result.backdrop_path || result.postar_path}`}
           width={500}
           height={300}
           alt={`${result.title}`}
-          className="sm:rounded-t-lg group-hover:opacity-75 transition-opacity duration-100"
+          className="rounded-t-lg group-hover:opacity-75 transition-opacity duration-100"
         />
         <div className="p-2">
-          <p className="line-clamp-2 text-sm">{result.overview}</p>
+          <p className="line-clamp-2 text-md">
+          {/* Image: {result.backdrop_path || result.postar_path} */}
+            {result.overview}
+          </p>
           <h2 className="text-lg font-bold truncate">{result.title || result.name}</h2>
           <p className="flex items-center">
             {result.release_date || result.first_air_date}
